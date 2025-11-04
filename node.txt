@@ -1,0 +1,15 @@
+node version 22.14.0
+
+welcome_to_bikeLink: 'Welcome to BikeLink',
+turn_lights_that_turn_heads: 'Turn lights that turn heads.',
+sign_in: 'Sign In',
+email_address: 'Email Address',
+enter_email_address: 'Enter Email Address',
+password: 'Password',
+enter_password: 'Enter Password',
+go_back: 'Go Back',
+forgot_your_password: 'Forgot your password? ',
+reset_it_here: 'Reset it here.',
+reset_pasword: 'Reset Pasword',
+send_reset_link: 'Send Reset Link',
+confirm_password: 'Confirm Password'

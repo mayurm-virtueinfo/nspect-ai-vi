@@ -1,0 +1,22 @@
+export const AppStrings = {
+  welcome_to_bikeLink: 'Welcome to BikeLink',
+  turn_lights_that_turn_heads: 'Turn lights that turn heads.',
+  sign_in: 'Sign In',
+  email_address: 'Email Address',
+  enter_email_address: 'Enter Email Address',
+  password: 'Password',
+  enter_password: 'Enter Password',
+  go_back: 'Go Back',
+  forgot_your_password: 'Forgot your password? ',
+  reset_it_here: 'Reset it here.',
+  reset_pasword: 'Reset Pasword',
+  send_reset_link: 'Send Reset Link',
+  confirm_password: 'Confirm Password',
+  please_enter_the_email_address: 'Please enter the email address.',
+  please_enter_valid_email_address: "The entered email is incorrect.",
+  please_enter_the_password: 'Please enter the password.',
+  the_password_must_be_at_least: 'The password must be at least 8 characters with at least one letter, number and special character.',
+  please_enter_the_cpassword: 'Please enter the confirm password.',
+  the_entered_passwords_do_not_match: 'The entered passwords do not match.',
+  please_enter_the_email_and_password: 'Please enter the email and password.'
+}
