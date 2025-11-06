@@ -1655,6 +1655,11 @@
     prompts "^2.4.2"
     semver "^7.5.2"
 
+"@react-native-community/netinfo@^11.4.1":
+  version "11.4.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-11.4.1.tgz#a3c247aceab35f75dd0aa4bfa85d2be5a4508688"
+  integrity sha512-B0BYAkghz3Q2V09BF88RA601XursIEA111tnc2JOaN7axJWmNefmfjZqw/KdSxKZp7CZUuPpjBmz/WCR9uaHYg==
+
 "@react-native/assets-registry@0.82.1":
   version "0.82.1"
   resolved "https://registry.yarnpkg.com/@react-native/assets-registry/-/assets-registry-0.82.1.tgz#834058f9391fa7aa85404f833ece2ab70754a332"
@@ -2695,6 +2700,11 @@ bytes@3.1.2:
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.2.tgz#8b0beeb98605adf1b128fa4386403c009e0221a5"
   integrity sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==
 
+calendarize@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/calendarize/-/calendarize-1.1.1.tgz#0fa8b8de6b5e6ff9f9fbb89cc3a8c01aace291c2"
+  integrity sha512-C2JyBAtNp2NG4DX4fA1EILggLt/5PlYzvQR0crHktoAPBc9TlIfdhzg7tWekCbe+pH6+9qoK+FhPbi+vYJJlqw==
+
 call-bind-apply-helpers@^1.0.0, call-bind-apply-helpers@^1.0.1, call-bind-apply-helpers@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz#4b5428c222be985d79c3d82657479dbe0b59b2d6"
@@ -3080,6 +3090,11 @@ data-view-byte-offset@^1.0.1:
     call-bound "^1.0.2"
     es-errors "^1.3.0"
     is-data-view "^1.0.1"
+
+dayjs@^1.11.13:
+  version "1.11.19"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.19.tgz#15dc98e854bb43917f12021806af897c58ae2938"
+  integrity sha512-t5EcLVS6QPBNqM2z8fakk/NKel+Xzshgt8FFKAn+qwlD1pzZWxh0nVCrvFK7ZDb6XucZeF9z8C7CBWTRIVApAw==
 
 dayjs@^1.8.15:
   version "1.11.18"
@@ -4263,7 +4278,7 @@ internal-slot@^1.1.0:
     hasown "^2.0.2"
     side-channel "^1.1.0"
 
-invariant@^2.2.4:
+invariant@2.2.4, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -6040,6 +6055,14 @@ react-is@^19.1.0, react-is@^19.1.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.2.0.tgz#ddc3b4a4e0f3336c3847f18b806506388d7b9973"
   integrity sha512-x3Ax3kNSMIIkyVYhWPyO09bu0uttcAIoecO/um/rKGQ4EltYWVYtyiGkS/3xMynrbVQdS69Jhlv8FXUEZehlzA==
 
+react-native-big-calendar@^4.19.0:
+  version "4.19.0"
+  resolved "https://registry.yarnpkg.com/react-native-big-calendar/-/react-native-big-calendar-4.19.0.tgz#7c553f2c1a132cf35ffd36f845598af65543dcf5"
+  integrity sha512-srX0iRjBi+6jUgMXHqMh1s6JOb+T/Q9lEpD9dTjlhhVlSupYrwTBvPRmaLrsvj1LWefgZaVd4JpnLPbvR25WFw==
+  dependencies:
+    calendarize "^1.1.1"
+    dayjs "^1.11.13"
+
 react-native-bootsplash@^6.3.11:
   version "6.3.11"
   resolved "https://registry.yarnpkg.com/react-native-bootsplash/-/react-native-bootsplash-6.3.11.tgz#5ed543e5273d7d75912dbfc56c5b0a66bb4ee924"
@@ -6059,6 +6082,11 @@ react-native-bootsplash@^6.3.11:
     sharp "^0.32.6"
     ts-dedent "^2.2.0"
     xml-formatter "^3.6.5"
+
+react-native-device-info@^14.1.1:
+  version "14.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-14.1.1.tgz#f50c03902f87e4a99b1c51ed85163b795f02b3ea"
+  integrity sha512-lXFpe6DJmzbQXNLWxlMHP2xuTU5gwrKAvI8dCAZuERhW9eOXSubOQIesk9lIBnsi9pI19GMrcpJEvs4ARPRYmw==
 
 react-native-gesture-handler@^2.29.0:
   version "2.29.0"
@@ -6099,6 +6127,11 @@ react-native-shadow-2@^7.1.2:
   dependencies:
     colord "2.9.2"
 
+react-native-splash-view@0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/react-native-splash-view/-/react-native-splash-view-0.0.18.tgz#bda517f79081dc181a8d57d6ea2f6aea16ca1d6f"
+  integrity sha512-dG6av22HtXpbfhDKC5cG6YkFo6czQR7nB+3KzdhWx+rVNLkJvNo6cABVehWNoUM0z9VRrAKrtZjYN28tM2b2Ug==
+
 react-native-svg@^15.14.0:
   version "15.14.0"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-15.14.0.tgz#e5e7e18bfc2be29347631734a1af409b63c582eb"
@@ -6115,6 +6148,14 @@ react-native-vector-icons@10.2.0:
   dependencies:
     prop-types "^15.7.2"
     yargs "^16.1.1"
+
+react-native-webview@^13.16.0:
+  version "13.16.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-13.16.0.tgz#c995148f944a7eaf12389f0e6d5c6f5e6a775686"
+  integrity sha512-Nh13xKZWW35C0dbOskD7OX01nQQavOzHbCw9XoZmar4eXCo7AvrYJ0jlUfRVVIJzqINxHlpECYLdmAdFsl9xDA==
+  dependencies:
+    escape-string-regexp "^4.0.0"
+    invariant "2.2.4"
 
 react-native@0.82.1:
   version "0.82.1"

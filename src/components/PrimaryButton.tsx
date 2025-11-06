@@ -39,10 +39,10 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   textStyle,
   iconStyle,
   buttonWidth = '100%',
-  buttonHeight = 54,
+  buttonHeight = 50,
   buttonJustifyContent = 'center',
-  buttonBorderRadius = 20,
-  buttonMarginTop = 8,
+  buttonBorderRadius = 1000,
+  buttonMarginTop = 18,
   ...rest
 }) => {
   return (
@@ -61,37 +61,30 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       {...rest}
     >
       <LinearGradient
-        colors={['rgba(255,255,255,0.2)', 'rgba(255,255,255,0)']}
+        colors={[
+          '#1877F2',
+          '#1877F2',
+          '#1877F2',
+        ]}
         start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={[styles.outerGradient, { borderRadius: buttonBorderRadius }]}
+        end={{ x: 1, y: 0 }}
+        style={[
+          styles.innerGradient,
+          {
+            borderRadius: buttonBorderRadius - 1,
+            justifyContent: buttonJustifyContent,
+          },
+        ]}
       >
-        <LinearGradient
-          colors={[
-            'rgba(17, 69, 245, 1)',
-            'rgba(17, 69, 245, 1)',
-            'rgba(52, 99, 255, 1)',
-          ]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={[
-            styles.innerGradient,
-            {
-              borderRadius: buttonBorderRadius - 1,
-              justifyContent: buttonJustifyContent,
-            },
-          ]}
-        >
-          {showIcon && iSource && (
-            <Image
-              source={iSource}
-              resizeMode="contain"
-              style={[styles.icon, iconStyle]}
-            />
-          )}
+        {showIcon && iSource && (
+          <Image
+            source={iSource}
+            resizeMode="contain"
+            style={[styles.icon, iconStyle]}
+          />
+        )}
 
-          <Text style={[styles.text, textStyle]}>{title}</Text>
-        </LinearGradient>
+        <Text style={[styles.text, textStyle]}>{title}</Text>
       </LinearGradient>
     </Pressable>
   );
@@ -106,10 +99,6 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 8,
   },
-  outerGradient: {
-    flex: 1,
-    padding: 1.5,
-  },
   innerGradient: {
     flex: 1,
     alignItems: 'center',
@@ -122,9 +111,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#FFFFFF',
-    fontSize: 18,
-    fontFamily: Fonts.SF_Pro_Text_Medium,
-    fontWeight: '500',
+    fontSize: 12,
+    fontFamily: Fonts.DMSans_Bold,
     textAlign: 'center',
   },
 });

@@ -5,5 +5,12 @@ export const Images = {
   ic_splash: require('../../assets/Images/ic_splash.png'),  
   ic_full_logo: require('../../assets/Images/ic_full_logo.png'),  
   ic_app_logo: require('../../assets/Images/ic_app_logo.png'),  
-  ic_logo_bg: require('../../assets/Images/ic_logo_bg.png'),  
+  ic_intro: require('../../assets/Images/ic_intro.png'),
+  ic_intro2: require('../../assets/Images/ic_intro2.png'),
+  ic_drawer_menu: require('../../assets/Images/ic_drawer_menu.png'),
+  ic_txt_logo: require('../../assets/Images/ic_txt_logo.png'),
+  ic_round_search: require('../../assets/Images/ic_round_search.png'),
+  ic_input_user: require('../../assets/Images/ic_input_user.png'),
+  ic_lock: require('../../assets/Images/ic_lock.png'),
+  ic_call: require('../../assets/Images/ic_call.png'),
 };

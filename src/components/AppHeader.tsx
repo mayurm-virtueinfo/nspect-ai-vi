@@ -6,11 +6,13 @@ import {
   Pressable,
   StyleProp,
   StyleSheet,
+  Text,
   TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
 import { Images } from '../theme/Images';
+import Fonts from '../theme/Fonts';
 
 const { height } = Dimensions.get('window');
 
@@ -25,39 +27,51 @@ interface AppHeaderProps {
   isShowBlueBell?: boolean;
   onBlueBellClick?: () => void;
   mainStyle?: StyleProp<ViewStyle>;
-  showAvtar?: boolean;
+  showSearch?: boolean;
   onProfilePress?: () => void;
 }
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
+  title,
   onBack,
   isShowBackButton = false,
   mainStyle,
-  showAvtar = false,
+  showSearch = false,
   onProfilePress,
 }) => {
   return (
     <View style={[styles.container, mainStyle]}>
+      <TouchableOpacity style={styles.headerContent}>
+        <Image 
+          source={Images.ic_drawer_menu}
+        />
+        <Image 
+          source={Images.ic_txt_logo}
+          resizeMode={'contain'}
+          style={styles.textLogoImg}
+        />
+      </TouchableOpacity>
       {/* Left: Back Button */}
-      {isShowBackButton && (
-        <Pressable onPress={onBack} style={styles.backContainer}>
-          <Image source={Images.ic_back_arrow} style={styles.backImage} />
-        </Pressable>
-      )}
-
-      {/* Center: Logo */}
-      <View style={styles.centerContent}>
-        <Image source={Images.ic_logo_bg} style={styles.logoImage1} />
-        <Image source={Images.ic_logo} style={styles.logoImage2} />
+      <View style={{flexDirection: 'row', marginTop: 15, alignItems: 'center' }}>
+        {isShowBackButton && (
+          <TouchableOpacity onPress={onBack} style={styles.backContainer}>
+            <Image source={Images.ic_back_arrow} style={styles.backImage} resizeMode={'contain'}/>
+          </TouchableOpacity>
+        )}
+        <Text style={styles.titleTxt}>{title}</Text>
       </View>
 
-      {/* Right: Avatar / Bell */}
+      {/* Center: Logo */}
+      {/* <View style={styles.centerContent}>
+
+      </View> */}
+      
       <View style={styles.rightContent}>
-        {showAvtar && (
-          <TouchableOpacity onPress={onProfilePress} style={styles.bellBtn}>
+        {showSearch && (
+          <TouchableOpacity onPress={onProfilePress}>
             <Image
-              source={Images.ic_back_arrow}
-              style={styles.backImage}
+              source={Images.ic_round_search}
+              style={styles.searchImage}
             />
           </TouchableOpacity>
         )}
@@ -68,71 +82,44 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
 const styles = StyleSheet.create({
   container: {
+    height: height * 0.16,
+    backgroundColor:'#1877F2',
+    paddingHorizontal: 20,
+    paddingVertical:20,
+  },
+  headerContent: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center', // centers logo in the middle
-    height: height * 0.08,
-    shadowColor: Platform.OS === 'ios' ? '#00000029' : 'rgba(0, 0, 0, 0.6)',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 1.0,
-    elevation: Platform.OS === 'ios' ? 0.1 : 1,
-    width: '100%',
+    alignItems: 'center',    
+  },
+  textLogoImg: {
+    width: 121,
+    height: 28,
   },
   backContainer: {
-    position: 'absolute',
-    left: 20,
-    backgroundColor: 'white',
-    borderRadius: 60,
     height: 40,
     width: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 1,
+    justifyContent:'center',
+  },
+  titleTxt: {
+    fontSize: 28,
+    fontFamily: Fonts.DMSans_Black,
+    color: '#FFFFFF'
   },
   rightContent: {
     position: 'absolute',
-    right: 30,
+    right: 20,
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  bellBtn: {
-    height: 40,
-    width: 40,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 60,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 1,
-    marginLeft: 8,
-  },
-  centerContent: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logoImage2: {
-    position: 'absolute',
-    height: 46,
-    width: 28,
-    resizeMode: 'contain',
-  },
-  logoImage1: {
-    height: 70,
-    width: 70,
-    resizeMode: 'contain',
+    paddingVertical:20,
   },
   backImage: {
-    height: 14,
-    width: 14,
-    resizeMode: 'contain',
+    height: 18,
+    width: 29,
   },
+  searchImage: {
+    width: 40,
+    height: 40,
+  }
 });
 
 export default AppHeader;
