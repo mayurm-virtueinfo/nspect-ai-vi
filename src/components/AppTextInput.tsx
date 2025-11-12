@@ -17,6 +17,7 @@ interface AppTextInputProps extends TextInputProps {
   rightComponent?: React.ReactNode;
   icon?: any;
   style?: StyleProp<ViewStyle>;
+  error?: string;
 }
 
 const AppTextInput: React.FC<AppTextInputProps> = ({
@@ -24,6 +25,7 @@ const AppTextInput: React.FC<AppTextInputProps> = ({
   rightComponent,
   icon,
   style,
+  error,
   ...props
 }) => {
   return (
@@ -52,6 +54,7 @@ const AppTextInput: React.FC<AppTextInputProps> = ({
           <View style={styles.rightComponentContainer}>{rightComponent}</View>
         )}
       </View>
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
     </View>
   );
 };
@@ -93,6 +96,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 10,
+  },
+  errorText: {
+    color: '#F21818',
+    fontSize: 14,
+    marginTop: 5,
+    fontFamily: Fonts.DMSans_Regular,
   },
 });
 

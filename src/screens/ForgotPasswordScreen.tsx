@@ -25,23 +25,17 @@ const ForgotPasswordScreen: React.FC = () => {
 
   const navigation = useNavigation<ForgotPasswordScreenNavigationProp>();
 
-  const [email, setEmail] = useState(__DEV__ ? 'dev.12@semaphoremobile.net' : '');
+  const [email, setEmail] = useState(__DEV__ ? '' : '');
+  const [emailError, setEmailError] = useState('');
 
   const handleGoBack = () => navigation.goBack();
 
   const handleSignIn = () => {
+    setEmailError('');
     if (email === '') {
-      showModal({
-        body: AppStrings.please_enter_the_email_address,
-        buttonText: "Close",
-        onClose: () => hideModal(),
-      });
+      setEmailError(AppStrings.please_enter_the_email_address);
     } else if (!validateEmail(email)) {
-      showModal({
-        body: AppStrings.please_enter_valid_email_address,
-        buttonText: "Close",
-        onClose: () => hideModal(),
-      })
+      setEmailError(AppStrings.please_enter_valid_email_address);      
     } else {
       
     }
@@ -68,8 +62,12 @@ const ForgotPasswordScreen: React.FC = () => {
                 placeholder={AppStrings.enter_email_address}
                 keyboardType="email-address"
                 value={email}
-                onChangeText={setEmail}
+                onChangeText={(text) => {
+                  setEmail(text);
+                  setEmailError('');
+                }}
                 icon={Images.ic_input_user}
+                error={emailError}
               />
             </View>
             <View style={styles.buttonContainer}>

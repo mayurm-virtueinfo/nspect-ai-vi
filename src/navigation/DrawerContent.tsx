@@ -10,6 +10,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import DeviceInfo from 'react-native-device-info';
 import Icon from 'react-native-vector-icons/Feather';
 import Fonts from '../theme/Fonts';
+import { AppStrings } from '../theme/AppStrings';
 
 
 export const DrawerContent: React.FC<DrawerContentComponentProps> = (props) => {
@@ -39,11 +40,22 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = (props) => {
             <Text style={styles.menuText}>My Profile</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => handleNavigate('TermsOfService')}>
+          <TouchableOpacity 
+            onPress={() => {
+              navigation.closeDrawer();
+              navigation.navigate('Cms', {
+                title: AppStrings.terms_of_service,
+              });
+            }}>
             <Text style={styles.menuText}>Terms of Service</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => handleNavigate('PrivacyPolicy')}>
+          <TouchableOpacity onPress={() => {
+            navigation.closeDrawer();
+            navigation.navigate('Cms', {
+              title: AppStrings.privacy_policy,
+            });
+          }}>
             <Text style={styles.menuText}>Privacy Policy</Text>
           </TouchableOpacity>
 
