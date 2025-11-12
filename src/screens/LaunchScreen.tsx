@@ -1,7 +1,6 @@
 import React from 'react';
-import { ImageBackground, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { Images } from '../theme/Images';
-import { AppHeader } from '../components/AppHeader';
 import { AppStrings } from '../theme/AppStrings';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { useNavigation } from '@react-navigation/native';
@@ -16,18 +15,15 @@ const LaunchScreen: React.FC = () => {
 
   return (
     <View style={styles.mainContainer}>
-      <ImageBackground 
-        source={Images.ic_app_bg}
-        style={styles.background}
-      >
-        <AppHeader />
-        <View style={styles.textContainer}>
-          <Text style={styles.welcomeTxt}>
-            {AppStrings.welcome_to_bikeLink}
-          </Text>
-          <Text style={styles.descTxt}>
-            {AppStrings.turn_lights_that_turn_heads}
-          </Text>
+      <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.centerContainer}>
+          <Image 
+            source={Images.ic_intro2}
+            resizeMode="contain"
+            style={styles.image}
+          />
+          <Text style={styles.patentText}>{AppStrings.patent_pending}</Text>
+          <Text style={styles.welcomeText}>{AppStrings.welcome_lets_get_started}</Text>
         </View>
         <View style={styles.buttonContainer}>
           <PrimaryButton
@@ -35,8 +31,14 @@ const LaunchScreen: React.FC = () => {
             buttonWidth="90%"
             onPress={() => navigation.navigate('Signin')}
           />
+          <PrimaryButton
+            title={AppStrings.create_an_account}
+            buttonWidth="90%"
+            buttonMarginTop={20}
+            onPress={() => navigation.navigate('CreateAccount')}
+          />
         </View>
-      </ImageBackground>
+      </ScrollView>
     </View>
   );
 };
@@ -46,35 +48,38 @@ export default LaunchScreen;
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    backgroundColor: '#FCFCFB',
   },
-  background: {
+  scrollView: {
+    flex:1,
+  },
+  scrollContainer: {
+    flexGrow: 1
+  },
+  centerContainer: {
     flex: 1,
-    justifyContent: 'space-between',
-    paddingTop: StatusBar.currentHeight ? StatusBar.currentHeight + 10 : 50,
-    paddingBottom: 30,
+    justifyContent: 'center', // Center vertically
     alignItems: 'center',
   },
-  welcomeTxt: {
-    color: 'rgba(255, 255, 255, 0.7)',
-    fontSize: 32,
-    textAlign: 'center',
-    fontWeight: '600',
-    fontFamily: Fonts.SF_Pro_Text_Medium,
+  image: {
+    width: '100%',
+    height: 270,
+    marginTop: 80,
   },
-  descTxt: {
-    color: 'rgba(255, 255, 255, 0.7)',
-    fontSize: 18,
-    textAlign: 'center',
-    lineHeight: 40,
-    fontFamily: Fonts.SF_Pro_Text_Medium,
-    fontWeight: '600',
+  patentText: {
+    fontSize: 14,
+    color: '#000',
   },
-  textContainer: {
-    alignItems: 'center',
-    marginTop: -80,
+  welcomeText: {
+    fontSize: 28,
+    fontFamily: Fonts.DMSans_Bold,
+    textAlign: 'center',
+    marginTop: 50,
+    color: '#000',
   },
   buttonContainer: {
-    width: '100%',
     alignItems: 'center',
+    justifyContent: 'flex-end',
+    marginBottom: 40, // Padding from bottom
   },
 });

@@ -8,6 +8,7 @@
 import { StatusBar, StyleSheet } from 'react-native';
 import {
   SafeAreaProvider,
+  SafeAreaView,
 } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import AppNavigator from './src/navigation/AppNavigator';
@@ -23,8 +24,10 @@ function App() {
   
   return (
     <SafeAreaProvider>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
-      <AppContent />
+      {/* <SafeAreaView style={styles.safeArea} > */}
+        {/* <StatusBar translucent backgroundColor="transparent" barStyle="light-content" /> */}
+        <AppContent />
+      {/* </SafeAreaView> */}
     </SafeAreaProvider>
   );
 }
@@ -41,6 +44,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  safeArea: {
+    flex:1,
+  }
 });
 
 export default App;

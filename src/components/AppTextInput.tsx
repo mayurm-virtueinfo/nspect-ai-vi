@@ -1,89 +1,98 @@
 import React from 'react';
-import { StyleSheet, TextInput, View, Text, TextInputProps, Platform } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  TextInputProps,
+  Platform,
+  StyleProp,
+  ViewStyle,
+  Text,
+  Image,
+} from 'react-native';
 import Fonts from '../theme/Fonts';
 
 interface AppTextInputProps extends TextInputProps {
   label?: string;
+  rightComponent?: React.ReactNode;
+  icon?: any;
+  style?: StyleProp<ViewStyle>;
 }
 
-const AppTextInput: React.FC<AppTextInputProps> = ({ label, ...props }) => {
+const AppTextInput: React.FC<AppTextInputProps> = ({
+  label,
+  rightComponent,
+  icon,
+  style,
+  ...props
+}) => {
   return (
-    <View style={styles.container}>
-      {label && <Text style={styles.label}>{label}</Text>}
+    <View style={[style]}>
+      {label && <View style={styles.labelContainer}><Text style={styles.label}>{label}</Text></View>}
 
-      <View style={styles.shadowWrapper}>
-        <LinearGradient
-          colors={['rgba(255, 255, 255, 0.08)', 'rgba(0, 0, 0, 0.05)']}
-          style={styles.gradientOverlay}
-        />
+      <View style={[styles.container]}>
+        {icon && 
+        <View style={styles.iconContainer}>
+          <Image 
+            source={icon}
+            style={{height: 15, width: 15, resizeMode: 'contain'}}
+          />
+        </View>}
+
         <TextInput
-          placeholderTextColor="rgba(255,255,255,0.4)"
-          style={styles.input}
           {...props}
+          style={[
+            styles.input,
+            rightComponent ? { paddingRight: 0 } : undefined,
+          ]}
+          placeholderTextColor="#888"
         />
+
+        {rightComponent && (
+          <View style={styles.rightComponentContainer}>{rightComponent}</View>
+        )}
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    // width: 353,
+  labelContainer: {
+    marginBottom: 6,
   },
   label: {
-    color: 'rgba(255, 255, 255, 0.7)',
-    fontSize: 16,
-    marginBottom: 8,
-    marginLeft: 4,
-    fontWeight: '500',
-    fontFamily: Fonts.SF_Pro_Text_Medium,
-    
+    fontFamily: Fonts.DMSans_Bold,
+    fontSize: 14,
+    color: '#171717',
+    fontWeight: '700',
   },
-  shadowWrapper: {
-    position: 'relative',
-    // width: 353,
-    height: 61,
-    borderRadius: 20,
-    borderWidth: 1.5,
-    borderColor: 'rgba(29,29,29,1)',
-    backgroundColor: 'rgba(255, 255, 255, 0.04)',
-    // overflow: 'hidden',
-
-    // Simulated soft blur shadow (outer glow)
-     shadowColor: 'rgba(0,0,0,0.5)',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 1,
-    elevation: 6,
-
-    // iOS-only blur feel
-    ...Platform.select({
-      ios: {
-        shadowColor: 'rgba(0,0,0,0.5)',
-      },
-    }),
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 100,
+    backgroundColor: '#ECEFF6',
+    paddingHorizontal: 16,
+    minHeight: 50,
   },
-  focusedShadow: {
-    borderColor: 'rgba(255,165,0,0.8)',
-    shadowColor: 'rgba(255,165,0,0.8)',
-    shadowOpacity: 0.9,
-    shadowRadius: 12,
-  },
-  gradientOverlay: {
-    ...StyleSheet.absoluteFill,
-    borderRadius: 20,
+  iconContainer: {
+    width: 20,
+    height: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 10,
+    marginLeft: 12,
   },
   input: {
     flex: 1,
-    paddingTop: 21,
-    paddingRight: 30,
-    paddingBottom: 20,
-    paddingLeft: 30,
-    color: 'white',
-    fontSize: 16,
-    fontFamily: Fonts.SF_Pro_Text_Medium,
-    fontWeight: '400',
+    fontSize: 14,
+    fontFamily: Fonts.DMSans_Regular,
+    color: '#171717',
+    paddingVertical: Platform.OS === 'ios' ? 12 : 8,
+  },
+  rightComponentContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
   },
 });
 

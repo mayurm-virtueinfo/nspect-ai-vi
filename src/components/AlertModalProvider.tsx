@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontFamily: Fonts.SF_Pro_Text_Medium,
+    fontFamily: Fonts.DMSans_Bold,
     // fontWeight: "bold",
     color: Colors.primaryText,
     marginBottom: 12,
@@ -109,15 +109,15 @@ const styles = StyleSheet.create({
   },
   body: {
     fontSize: 16,
-    fontFamily: Fonts.SF_Pro_Text_Medium,
+    fontFamily: Fonts.DMSans_Regular,
     // fontWeight: "bold",
     color: Colors.primaryText,
     marginBottom: 20,
     textAlign: "center",
   },
   button: {
-    backgroundColor: Colors.primaryText,
-    borderRadius: 12,
+    backgroundColor: '#1877F2',
+    borderRadius: 100,
     paddingVertical: 12,
     paddingHorizontal: 20,
     width: '60%',

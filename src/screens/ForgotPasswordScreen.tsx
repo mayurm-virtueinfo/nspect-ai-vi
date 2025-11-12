@@ -11,7 +11,7 @@ import AppTextInput from '../components/AppTextInput';
 import { useAlertModal } from '../components/AlertModalProvider';
 import SecondaryPrimaryButton from '../components/SecondaryPrimaryButton';
 import { PrimaryButton } from '../components/PrimaryButton';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { validateEmail } from '../utility/Helper';
 
 type ForgotPasswordScreenNavigationProp = NativeStackNavigationProp<
@@ -21,6 +21,7 @@ type ForgotPasswordScreenNavigationProp = NativeStackNavigationProp<
 
 const ForgotPasswordScreen: React.FC = () => {
   const { showModal, hideModal } = useAlertModal();
+  const insets = useSafeAreaInsets();
 
   const navigation = useNavigation<ForgotPasswordScreenNavigationProp>();
 
@@ -42,48 +43,37 @@ const ForgotPasswordScreen: React.FC = () => {
         onClose: () => hideModal(),
       })
     } else {
-      navigation.navigate('ResetPassword');
+      
     }
   };
 
   return (
-    <View style={styles.container}>
-      <SafeAreaView style={styles.headerWrapper}>
-        <AppHeader isShowBackButton onBack={handleGoBack} />
-      </SafeAreaView>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <AppHeader isShowBackButton onBack={handleGoBack} title={AppStrings.forgot_password} />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardAvoid}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 20 : 10}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 20 : 0}
       >
         <ScrollView
           contentContainerStyle={styles.scrollContainer}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          <ImageBackground source={Images.ic_app_bg} style={styles.background}>
-            <View style={styles.titleContainer}>
-              <Text style={styles.title}>{AppStrings.reset_pasword}</Text>
-            </View>
-          </ImageBackground>
           <View style={styles.formContainer}>
+            <Text style={styles.title}>{AppStrings.enter_your_email_address_to_receive_a_reset_link}</Text>
             <View style={styles.inputContainer}>
               <AppTextInput
-                label="Email Address"
-                placeholder="Enter Email Address"
+                label={AppStrings.email_address}
+                placeholder={AppStrings.enter_email_address}
                 keyboardType="email-address"
                 value={email}
                 onChangeText={setEmail}
+                icon={Images.ic_input_user}
               />
             </View>
-
             <View style={styles.buttonContainer}>
-              <PrimaryButton title={AppStrings.send_reset_link} onPress={handleSignIn} />
-              <SecondaryPrimaryButton
-                title="Go Back"
-                onPress={handleGoBack}
-                buttonStyle={styles.goBackButton}
-              />
+              <PrimaryButton title={AppStrings.send_reset_link} onPress={handleSignIn} />              
             </View>
           </View>
         </ScrollView>
@@ -95,7 +85,7 @@ const ForgotPasswordScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#090e10'
+    backgroundColor: '#1877F2',
   },
   keyboardAvoid: {
     flex: 1,
@@ -103,47 +93,27 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
   },
-  background: {
-    height: 590,
-    paddingTop: StatusBar.currentHeight ? StatusBar.currentHeight + 10 : 50,
-    alignItems: 'center',
-  },
-  titleContainer: {
-    flex: 1,
-    justifyContent: 'center',
-  },
   title: {
-    color: 'rgba(255, 255, 255, 0.7)',
-    fontSize: 32,
+    fontSize: 28,
+    fontFamily: Fonts.DMSans_Bold,
     textAlign: 'center',
-    fontWeight: '500',
-    fontFamily: Fonts.SF_Pro_Text_Medium,
   },
   formContainer: {
     flex: 1,
-    backgroundColor: 'rgba(15, 15, 15, 1)',
-    zIndex: 1000
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    borderTopRightRadius: 25,
+    borderTopLeftRadius: 25,
   },
   inputContainer: {
     marginTop: 20,
     gap: 15,
-    paddingHorizontal: 15,
+    paddingHorizontal: 25,
   },
   buttonContainer: {
-    paddingHorizontal: 15,
-    marginTop: 10,
+    paddingHorizontal: 25,
+    // marginTop: 10,
   },
-  goBackButton: {
-    marginTop: 15,
-  },
-  headerWrapper: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 1000,
-    backgroundColor: 'transparent',
-  }
 });
 
 export default ForgotPasswordScreen;
