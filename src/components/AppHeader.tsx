@@ -82,10 +82,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: height * 0.16,
+    height: height * 0.13, // 0.16
     backgroundColor:'#1877F2',
     paddingHorizontal: 20,
-    paddingVertical:20,
+    paddingVertical:5, // 20
   },
   headerContent: {
     flexDirection: 'row',

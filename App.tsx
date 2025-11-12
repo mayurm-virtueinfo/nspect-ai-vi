@@ -24,10 +24,10 @@ function App() {
   
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.safeArea} edges={["top", 'bottom']}>
+      {/* <SafeAreaView style={styles.safeArea} > */}
         {/* <StatusBar translucent backgroundColor="transparent" barStyle="light-content" /> */}
         <AppContent />
-      </SafeAreaView>
+      {/* </SafeAreaView> */}
     </SafeAreaProvider>
   );
 }

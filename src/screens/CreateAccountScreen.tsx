@@ -17,6 +17,7 @@ import AppTextInput from '../components/AppTextInput';
 import { useAlertModal } from '../components/AlertModalProvider';
 import { validateEmail, validatePassword } from '../utility/Helper';
 import PrimaryButton from '../components/PrimaryButton';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type CreateAccountScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -26,6 +27,7 @@ type CreateAccountScreenNavigationProp = NativeStackNavigationProp<
 const CreateAccountScreen: React.FC = () => {
   const { showModal, hideModal } = useAlertModal();
   const navigation = useNavigation<CreateAccountScreenNavigationProp>();
+  const insets = useSafeAreaInsets();
 
   const [email, setEmail] = useState(__DEV__ ? 'test@gmail.com' : '');
   const [fullName, setFullName] = useState(__DEV__ ? 'Test Dev 12' : '');
@@ -103,7 +105,7 @@ const CreateAccountScreen: React.FC = () => {
   const handleGoBack = () => navigation.goBack();
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
       <AppHeader title={AppStrings.create_account} isShowBackButton={true} onBack={handleGoBack} />
 
       <KeyboardAvoidingView

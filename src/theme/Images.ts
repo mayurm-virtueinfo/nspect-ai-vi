@@ -13,4 +13,11 @@ export const Images = {
   ic_input_user: require('../../assets/Images/ic_input_user.png'),
   ic_lock: require('../../assets/Images/ic_lock.png'),
   ic_call: require('../../assets/Images/ic_call.png'),
+  ic_home_inactive: require('../../assets/Images/ic_home_inactive.png'),
+  ic_home_active: require('../../assets/Images/ic_home_active.png'),
+  ic_inspection_inactive: require('../../assets/Images/ic_inspection_inactive.png'),
+  ic_inspection_active: require('../../assets/Images/ic_inspection_active.png'),
+  ic_doc_inactive: require('../../assets/Images/ic_doc_inactive.png'),
+  ic_chat_inactive: require('../../assets/Images/ic_chat_inactive.png'),
+  ic_chat_active: require('../../assets/Images/ic_chat_active.png'),
 };

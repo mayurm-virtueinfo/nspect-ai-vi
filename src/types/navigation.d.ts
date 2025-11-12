@@ -9,9 +9,11 @@ export type RootStackParamList = {
   HomeStack: undefined;
   Signin: undefined;
   CreateAccount: undefined,
-  Notifications: undefined;
   ForgotPassword: undefined;
   ResetPassword: undefined;
+  DrawerNavigator: undefined,
+  BottomTabNavigator: undefined;
+  Notifications: undefined;
   Status: undefined;
   ViewSystem1: undefined;
   ViewSystem2: undefined;

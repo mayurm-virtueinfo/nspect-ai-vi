@@ -11,7 +11,7 @@ import AppTextInput from '../components/AppTextInput';
 import { useAlertModal } from '../components/AlertModalProvider';
 import SecondaryPrimaryButton from '../components/SecondaryPrimaryButton';
 import { PrimaryButton } from '../components/PrimaryButton';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { validateEmail } from '../utility/Helper';
 
 type ForgotPasswordScreenNavigationProp = NativeStackNavigationProp<
@@ -21,6 +21,7 @@ type ForgotPasswordScreenNavigationProp = NativeStackNavigationProp<
 
 const ForgotPasswordScreen: React.FC = () => {
   const { showModal, hideModal } = useAlertModal();
+  const insets = useSafeAreaInsets();
 
   const navigation = useNavigation<ForgotPasswordScreenNavigationProp>();
 
@@ -47,7 +48,7 @@ const ForgotPasswordScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
       <AppHeader isShowBackButton onBack={handleGoBack} title={AppStrings.forgot_password} />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

@@ -19,6 +19,7 @@ import AppTextInput from '../components/AppTextInput';
 import { useAlertModal } from '../components/AlertModalProvider';
 import { validateEmail } from '../utility/Helper';
 import PrimaryButton from '../components/PrimaryButton';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type SigninScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -28,9 +29,10 @@ type SigninScreenNavigationProp = NativeStackNavigationProp<
 const SigninScreen: React.FC = () => {
   const { showModal, hideModal } = useAlertModal();
   const navigation = useNavigation<SigninScreenNavigationProp>();
+  const insets = useSafeAreaInsets();
 
   const [email, setEmail] = useState(__DEV__ ? 'test@gmail.com' : '');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState(__DEV__ ? 'Test@123' : '');
 
   const handleSignIn = () => {
     if (email === '' && password === '') {
@@ -58,14 +60,14 @@ const SigninScreen: React.FC = () => {
         onClose: () => hideModal(),
       });
     } else {
-      // TODO: handle API call or authentication logic
+      navigation.navigate('DrawerNavigator');
     }
   };
 
   const handleGoBack = () => navigation.goBack();
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {paddingTop: insets.top}]}>
       <AppHeader title="Sign In" isShowBackButton={true} onBack={handleGoBack} />
 
       <KeyboardAvoidingView
