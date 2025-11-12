@@ -1,9 +1,18 @@
-Inspection kon create kari sakse
-Inspection ne start kon karse
-Realtor kon hase
-Client kon hase
-Create account karie to e kon hase
+Who can create an inspection?
 
-Chat karse e kon karse
+Who can start an inspection?
 
-AI Assistant ma seno use karvano chhe
+Who will be the realtor?
+
+Who will be the client?
+
+When someone creates an account, who will they be?
+
+Who will be able to chat?
+
+What will be used in the AI Assistant?
+
+How many roles are there in this application?
+
+
+User is : Inspector
