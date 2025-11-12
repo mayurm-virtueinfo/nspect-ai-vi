@@ -20,4 +20,5 @@ export const Images = {
   ic_doc_inactive: require('../../assets/Images/ic_doc_inactive.png'),
   ic_chat_inactive: require('../../assets/Images/ic_chat_inactive.png'),
   ic_chat_active: require('../../assets/Images/ic_chat_active.png'),
+  ic_check_arrow: require('../../assets/Images/ic_check_arrow.png'),
 };

@@ -13,6 +13,7 @@ export type RootStackParamList = {
   ResetPassword: undefined;
   DrawerNavigator: undefined,
   BottomTabNavigator: undefined;
+  Cms: { title: string };
   Notifications: undefined;
   Status: undefined;
   ViewSystem1: undefined;

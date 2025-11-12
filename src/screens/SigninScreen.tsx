@@ -32,33 +32,20 @@ const SigninScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
 
   const [email, setEmail] = useState(__DEV__ ? 'test@gmail.com' : '');
-  const [password, setPassword] = useState(__DEV__ ? 'Test@123' : '');
+  const [password, setPassword] = useState(__DEV__ ? '' : '');
+
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const handleSignIn = () => {
-    if (email === '' && password === '') {
-      showModal({
-        body: AppStrings.please_enter_the_email_and_password,
-        buttonText: 'Close',
-        onClose: () => hideModal(),
-      });
-    } else if (email === '') {
-      showModal({
-        body: AppStrings.please_enter_the_email_address,
-        buttonText: 'Close',
-        onClose: () => hideModal(),
-      });
+    setEmailError('');
+    setPasswordError('');
+    if (email === '') {
+      setEmailError(AppStrings.please_enter_the_email_address);
     } else if (!validateEmail(email)) {
-      showModal({
-        body: AppStrings.please_enter_valid_email_address,
-        buttonText: 'Close',
-        onClose: () => hideModal(),
-      });
+      setEmailError(AppStrings.please_enter_valid_email_address);
     } else if (password === '') {
-      showModal({
-        body: AppStrings.please_enter_the_password,
-        buttonText: 'Close',
-        onClose: () => hideModal(),
-      });
+      setPasswordError(AppStrings.please_enter_the_password)
     } else {
       navigation.navigate('DrawerNavigator');
     }
@@ -83,20 +70,28 @@ const SigninScreen: React.FC = () => {
           <View style={styles.innerContent}>
             <AppTextInput
               value={email}
-              onChangeText={setEmail}
+              onChangeText={(text) => {
+                setEmail(text);
+                setEmailError('');
+              }}
               label={AppStrings.email_address}
               placeholder={AppStrings.enter_email_address}
               icon={Images.ic_input_user}
               keyboardType={'email-address'}
+              error={emailError}
             />
             <AppTextInput
               value={password}
-              onChangeText={setPassword}
+              onChangeText={(text) => {
+                setPassword(text);
+                setPasswordError('');
+              }}
               label={AppStrings.password}
               placeholder={AppStrings.enter_password}
               icon={Images.ic_lock}
               style={styles.input}
               secureTextEntry
+              error={passwordError}
             />
             <PrimaryButton
               title={AppStrings.sign_in}
@@ -109,6 +104,30 @@ const SigninScreen: React.FC = () => {
                 <Text style={styles.resetText}>{AppStrings.reset_it_here}</Text>
               </TouchableOpacity>
             </View>
+            <TouchableOpacity 
+              style={styles.termsContent} 
+              onPress={() => {
+                navigation.navigate('Cms', {
+                  title: AppStrings.terms_of_service,
+                });
+              }}
+            >
+              <Text style={styles.cmsTxt}>
+                {AppStrings.terms_of_service}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.privacyContent} 
+              onPress={() => {
+                navigation.navigate('Cms', {
+                  title: AppStrings.privacy_policy,
+                });
+              }}
+            >
+              <Text style={styles.cmsTxt}>
+                {AppStrings.privacy_policy}
+              </Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -157,5 +176,18 @@ const styles = StyleSheet.create({
   },
   input: {
     marginTop: 15,
-  }
+  },
+  cmsTxt: {
+    fontFamily: Fonts.DMSans_Bold,
+    fontSize: 12,
+    color: '#1877F2'
+  },
+  termsContent: {
+    alignSelf: 'center',
+    marginTop: 30,
+  },
+  privacyContent: {
+    alignSelf: 'center',
+    marginTop: 15,
+  },
 });

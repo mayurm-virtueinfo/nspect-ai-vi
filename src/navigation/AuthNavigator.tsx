@@ -6,6 +6,7 @@ import SigninScreen from '../screens/SigninScreen';
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen';
 import CreateAccountScreen from '../screens/CreateAccountScreen';
+import CmsScreen from '../screens/CmsScreen';
 
 
 const AuthStack = createNativeStackNavigator<RootStackParamList>();
@@ -18,6 +19,7 @@ const AuthNavigator = () => {
     <AuthStack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
     <AuthStack.Screen name="ResetPassword" component={ResetPasswordScreen} />
     <AuthStack.Screen name="CreateAccount" component={CreateAccountScreen} />
+    <AuthStack.Screen name="Cms" component={CmsScreen} />
   </AuthStack.Navigator>);
 };
 

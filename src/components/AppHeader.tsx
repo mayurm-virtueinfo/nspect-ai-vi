@@ -37,20 +37,26 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   isShowBackButton = false,
   mainStyle,
   showSearch = false,
+  showDrawer = false,
   onProfilePress,
 }) => {
   return (
     <View style={[styles.container, mainStyle]}>
-      <TouchableOpacity style={styles.headerContent}>
-        <Image 
-          source={Images.ic_drawer_menu}
-        />
+      <View style={styles.headerContent}>
+        {showDrawer && (
+          <TouchableOpacity style={styles.drawerContent}>
+            <Image 
+              source={Images.ic_drawer_menu}
+            />
+          </TouchableOpacity>
+        )}
         <Image 
           source={Images.ic_txt_logo}
           resizeMode={'contain'}
           style={styles.textLogoImg}
         />
-      </TouchableOpacity>
+
+      </View>
       {/* Left: Back Button */}
       <View style={{flexDirection: 'row', marginTop: 15, alignItems: 'center' }}>
         {isShowBackButton && (
@@ -91,9 +97,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',    
   },
+  drawerContent: {
+    marginRight: 20,
+  },
   textLogoImg: {
-    width: 121,
-    height: 28,
+    // width: 121,
+    // height: 28,
   },
   backContainer: {
     height: 40,
