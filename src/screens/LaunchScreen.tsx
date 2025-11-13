@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Images } from '../theme/Images';
 import { AppStrings } from '../theme/AppStrings';
 import { PrimaryButton } from '../components/PrimaryButton';
@@ -29,7 +29,10 @@ const LaunchScreen: React.FC = () => {
           <PrimaryButton
             title={AppStrings.sign_in}
             buttonWidth="90%"
-            onPress={() => navigation.navigate('Signin')}
+            onPress={() => {
+              console.log('onPress Sign in : ')
+              navigation.navigate('Signin')
+            }}
           />
           <PrimaryButton
             title={AppStrings.create_an_account}

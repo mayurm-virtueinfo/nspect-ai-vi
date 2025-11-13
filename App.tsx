@@ -17,8 +17,10 @@ import RNBootSplash from 'react-native-bootsplash';
 
 function App() {
   useEffect(() => {
+    console.log('JSLoaded')
     setTimeout(() => {
       RNBootSplash.hide({ fade: true });
+      console.log('BootSplash Hide')
     }, 2000);
   }, []);
   
