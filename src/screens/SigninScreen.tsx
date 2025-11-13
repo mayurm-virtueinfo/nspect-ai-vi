@@ -32,7 +32,7 @@ const SigninScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
 
   const [email, setEmail] = useState(__DEV__ ? 'test@gmail.com' : '');
-  const [password, setPassword] = useState(__DEV__ ? '' : '');
+  const [password, setPassword] = useState(__DEV__ ? 'Divyesh@@08' : '');
 
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');

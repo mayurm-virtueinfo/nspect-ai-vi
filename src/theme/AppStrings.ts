@@ -51,4 +51,8 @@ export const AppStrings = {
   you_need_to_agree_to_our_Terms_of_Service_and_Privacy_Policy_to_create_an_account: 'You need to agree to our Terms of Service and Privacy Policy to create an account.',
   license_number: 'License Number',
   enter_license_number: 'Enter License Number',
+  dashboard: 'Dashboard',
+  Inspections: 'Inspections',
+  conversations: 'Conversations',
+  Document: 'Document',
 }

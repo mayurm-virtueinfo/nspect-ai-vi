@@ -29,6 +29,7 @@ interface AppHeaderProps {
   mainStyle?: StyleProp<ViewStyle>;
   showSearch?: boolean;
   onProfilePress?: () => void;
+  onPressMenu?: () => void;
 }
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
@@ -39,12 +40,13 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   showSearch = false,
   showDrawer = false,
   onProfilePress,
+  onPressMenu,
 }) => {
   return (
     <View style={[styles.container, mainStyle]}>
       <View style={styles.headerContent}>
         {showDrawer && (
-          <TouchableOpacity style={styles.drawerContent}>
+          <TouchableOpacity style={styles.drawerContent} onPress={onPressMenu}>
             <Image 
               source={Images.ic_drawer_menu}
             />
@@ -88,10 +90,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: height * 0.13, // 0.16
+    height: height * 0.16, // 0.16
     backgroundColor:'#1877F2',
     paddingHorizontal: 20,
-    paddingVertical:5, // 20
+    paddingVertical:20, // 20
   },
   headerContent: {
     flexDirection: 'row',

@@ -14,6 +14,14 @@ export type RootStackParamList = {
   DrawerNavigator: undefined,
   BottomTabNavigator: undefined;
   Cms: { title: string };
+  DashboardStack: undefined;
+  Dashboard: undefined,
+  InspectionsStack: undefined;
+  Inspections: undefined,
+  DocumentStack: undefined;
+  Document: undefined;
+  ConversationsStack: undefined;
+  Conversations: undefined;
   Notifications: undefined;
   Status: undefined;
   ViewSystem1: undefined;
